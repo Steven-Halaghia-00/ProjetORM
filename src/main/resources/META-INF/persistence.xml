@@ -1,0 +1,21 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="guideRestoJPA">
+        <description>
+            Persistence unit for the GuideResto project.
+        </description>
+
+        <class>ch.hearc.ig.guideresto.business.BasicEvaluation</class>
+        <class>ch.hearc.ig.guideresto.business.City</class>
+        <class>ch.hearc.ig.guideresto.business.CompleteEvaluation</class>
+        <class>ch.hearc.ig.guideresto.business.Evaluation</class>
+        <class>ch.hearc.ig.guideresto.business.EvaluationCriteria</class>
+        <class>ch.hearc.ig.guideresto.business.Grade</class>
+        <class>ch.hearc.ig.guideresto.business.Localisation</class>
+        <class>ch.hearc.ig.guideresto.business.Restaurant</class>
+        <class>ch.hearc.ig.guideresto.business.RestaurantType</class>
+    </persistence-unit>
+</persistence>
