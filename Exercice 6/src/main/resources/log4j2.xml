@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="https://logging.apache.org/xml/ns"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                   https://logging.apache.org/xml/ns
+                   https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+
+    <!--
+        Configuration Log4j2
+        Déclare les appenders (sorties) et la stratégie de routage des logs via les loggers
+    -->
+    <Appenders>
+
+        <!--
+            Appender console
+            Affiche les messages dans la sortie standard avec un format simple
+        -->
+        <Console name="CONSOLE">
+            <PatternLayout pattern="%p - %m%n"/>
+        </Console>
+
+        <!--
+            Appender fichier principal
+            Conserve un log orienté exploitation avec un format enrichi (heure, thread, logger)
+        -->
+        <File name="MAIN" fileName="logs/main.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <!--
+            Appender fichier debug
+            Conserve un log détaillé destiné à l'analyse et au diagnostic
+        -->
+        <File name="DEBUG_LOG" fileName="logs/debug.log">
+            <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+
+        <!--
+            Logger applicatif dédié
+            Permet de limiter le niveau de logs sur un package précis et de contrôler l'additivité
+            Laisser commenté permet d'utiliser la configuration Root uniquement
+        -->
+        <!--<Logger name="ch.hearc.ig.guideresto" level="DEBUG" additivity="false">
+            <AppenderRef ref="DEBUG_LOG"/>
+        </Logger>-->
+
+        <!--
+            Logger racine
+            Niveau global configuré à DEBUG
+            Les AppenderRef peuvent filtrer plus finement via leur attribut level
+        -->
+        <Root level="DEBUG">
+
+            <!--
+                Console limitée aux messages INFO et plus
+                Permet d'éviter un bruit excessif en sortie standard
+            -->
+            <AppenderRef ref="CONSOLE" level="INFO"/>
+
+            <!--
+                Fichier MAIN limité aux messages WARN et plus
+                Conserve principalement les avertissements et erreurs
+            -->
+            <AppenderRef ref="MAIN" level="WARN"/>
+
+            <!--
+                Fichier DEBUG_LOG reçoit les messages DEBUG et plus
+                Conserve la trace complète pour analyse
+            -->
+            <AppenderRef ref="DEBUG_LOG" level="DEBUG"/>
+        </Root>
+    </Loggers>
+</Configuration>
