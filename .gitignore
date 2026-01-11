@@ -42,3 +42,19 @@ src/main/resources/hibernate.properties
 
 ### Log files ###
 logs/*
+
+# Maven (target à la racine ET dans tous les sous-dossiers)
+target/
+**/target/
+
+# Logs partout
+logs/
+**/logs/
+*.log
+
+# IntelliJ
+.idea/
+*.iml
+
+# Config sensible (hibernate.properties dans n'importe quel module)
+**/src/main/resources/hibernate.properties
